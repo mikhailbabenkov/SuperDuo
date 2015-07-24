@@ -81,7 +81,7 @@ public class BookDetailFragment extends BaseFragment implements LoaderManager.Lo
                 final Intent bookIntent = new Intent(getActivity(), BookService.class);
                 bookIntent.putExtra(BookService.EAN, mEan);
                 bookIntent.setAction(BookService.DELETE_BOOK);
-                if(activity != null) {
+                if (activity != null) {
                     activity.startService(bookIntent);
                     activity.getSupportFragmentManager().popBackStack();
                 }
@@ -136,9 +136,11 @@ public class BookDetailFragment extends BaseFragment implements LoaderManager.Lo
         mFullBookDesc.setText(desc);
         //set Authors
         final String authors = data.getString(data.getColumnIndex(AlexandriaContract.AuthorEntry.AUTHOR));
-        final String[] authorsArr = authors.split(",");
-        mAuthors.setLines(authorsArr.length);
-        mAuthors.setText(authors.replace(",", "\n"));
+        if(authors!=null) {
+            final String[] authorsArr = authors.split(",");
+            mAuthors.setLines(authorsArr.length);
+            mAuthors.setText(authors.replace(",", "\n"));
+        }
         //set Book cover
         final String imgUrl = data.getString(data.getColumnIndex(AlexandriaContract.BookEntry.IMAGE_URL));
         if (Patterns.WEB_URL.matcher(imgUrl).matches()) {

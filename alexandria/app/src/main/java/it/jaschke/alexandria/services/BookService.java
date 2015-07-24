@@ -23,6 +23,7 @@ import java.net.URL;
 import it.jaschke.alexandria.ui.MainActivity;
 import it.jaschke.alexandria.R;
 import it.jaschke.alexandria.data.AlexandriaContract;
+import it.jaschke.alexandria.utils.ConnectivityHelper;
 
 
 /**
@@ -91,6 +92,14 @@ public class BookService extends IntentService {
         }
 
         bookEntry.close();
+
+        // check connectivity here
+        if(!ConnectivityHelper.INSTANCE.isConnected()){
+            Intent messageIntent = new Intent(MainActivity.MESSAGE_EVENT);
+            messageIntent.putExtra(MainActivity.MESSAGE_KEY,getString(R.string.no_internet));
+            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(messageIntent);
+            return;
+        }
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;

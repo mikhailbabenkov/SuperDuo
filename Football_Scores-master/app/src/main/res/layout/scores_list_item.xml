@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:contentDescription="@string/home_team"
+                android:textColor="@android:color/black"
                 android:gravity="center"
                 android:text="@string/test_text"
                 android:textSize="@dimen/TeamNames"/>
@@ -52,6 +53,7 @@
                 android:contentDescription="@string/scores"
                 android:gravity="center"
                 android:text="@string/test_text"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/Score"/>
 
             <TextView
@@ -61,6 +63,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:gravity="center"
                 android:text="@string/test_text"/>
 
@@ -85,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="@android:color/black"
                 android:contentDescription="@string/away_team"
                 android:text="@string/test_text"
                 android:textSize="@dimen/TeamNames"/>
